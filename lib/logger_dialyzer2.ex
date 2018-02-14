@@ -1,16 +1,16 @@
-defmodule LoggerDialyzer do
+defmodule LoggerDialyzer2 do
   @moduledoc false
 
   require Logger
 
   def with_else do
+    my_ext_var = :fun_scope
 
     with :ok <- ok_or_error(),
          :ok <- ok_or_other_error() do
       :ok
     else
       :error ->
-        my_ext_var = :else_block_scope
         Logger.debug(fn -> my_ext_var end)
         :error
 
